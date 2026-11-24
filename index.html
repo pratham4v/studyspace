@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111318">
+  <title>Studyspace — Study Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Studyspace home">
+        <span class="brand-mark" aria-hidden="true">s</span>
+        <span class="brand-copy"><span>studyspace<span class="brand-period">.</span></span><small>by pratham Vats</small></span>
+      </a>
+      <div class="side-label">YOUR SPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span class="nav-icon">⌂</span> Overview</a>
+        <a class="nav-link" href="#weekly"><span class="nav-icon">▥</span> Progress</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="focus-card">
+          <span class="focus-spark">✦</span>
+          <p>Small steps<br>add up to big things.</p>
+          <span class="focus-caption">YOU'VE GOT THIS</span>
+        </div>
+        <div class="profile">
+          <div class="avatar">12</div>
+          <div><strong>Class 12</strong><span>Future you says thanks</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">s</span><span class="brand-copy"><span>studyspace<span class="brand-period">.</span></span><small>by pratham Vats</small></span></div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"><span id="theme-icon" aria-hidden="true">☾</span><span id="theme-label">Dark mode</span></button>
+          <div class="date-pill"><span class="date-dot"></span><span id="today-label"></span></div>
+        </div>
+      </header>
+
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">YOUR STUDY DASHBOARD</p>
+          <h1>Make today <span>count.</span></h1>
+          <p class="welcome-copy">A little progress each day adds up to a lot.</p>
+        </div>
+        <div class="streak-badge"><span aria-hidden="true">✦</span><div><strong id="streak-count">0 day streak</strong><small>Keep showing up</small></div></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Today's summary">
+        <article class="stat-card hours-card">
+          <div class="stat-top"><span class="stat-icon hours-icon">◷</span><span class="stat-kicker">TODAY'S STUDY</span></div>
+          <div class="goal-layout">
+            <div class="goal-ring" id="goal-ring" role="img" aria-label="0 percent of daily study goal complete">
+              <svg viewBox="0 0 88 88" aria-hidden="true"><circle class="ring-track" cx="44" cy="44" r="36"></circle><circle class="ring-progress" id="goal-ring-progress" cx="44" cy="44" r="36"></circle></svg>
+              <div class="ring-center"><strong id="goal-percent">0%</strong><span>complete</span></div>
+            </div>
+            <div class="goal-details">
+              <div class="goal-hours"><strong id="today-hours">0</strong><span>hours studied</span></div>
+              <div class="goal-setting"><label for="daily-goal-input">Daily goal</label><div class="goal-edit"><input id="daily-goal-input" type="number" min="0.5" max="24" step="0.5" value="6"><span>hrs</span><button id="save-goal" type="button" aria-label="Save daily goal">Save</button></div></div>
+            </div>
+          </div>
+        </article>
+        <article class="stat-card subject-card">
+          <div class="stat-top"><span class="stat-icon subject-icon">✎</span><span class="stat-kicker">STUDY SESSIONS</span></div>
+          <div class="stat-number"><span id="today-sessions">0</span><small>sessions today</small></div>
+          <div class="today-work-heading">TODAY'S WORK</div>
+          <div id="today-work" class="today-work-list"></div>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel weekly-panel" id="weekly">
+          <div class="panel-heading">
+            <div><p class="eyebrow">CONSISTENCY IS EVERYTHING</p><h2>Your weekly progress</h2></div>
+            <span class="week-chip">LAST 7 DAYS</span>
+          </div>
+          <div class="chart-summary"><strong id="week-hours">0h</strong><span>total study time this week</span><span class="chart-legend"><i></i> Study hours</span></div>
+          <div id="weekly-chart" class="weekly-chart" role="img" aria-label="Study hours over the last seven days"></div>
+          <div class="chart-foot"><span>Daily goal <b>6 hours</b></span><span id="week-days">0 days studied this week</span></div>
+        </section>
+
+        <section class="panel checklist-panel" id="daily-goals">
+          <div class="panel-heading">
+            <div><p class="eyebrow">ONE THING AT A TIME</p><h2>Today's checklist</h2></div>
+            <div class="checklist-heading-actions"><span class="check-count" id="check-count">0/4</span><button class="add-task-button" id="add-task-toggle" type="button" aria-label="Add your own checklist task" title="Add your own task">+</button></div>
+          </div>
+          <p class="panel-subtitle">Build a day you're proud of.</p>
+          <form id="custom-task-form" class="custom-task-form" hidden>
+            <input id="custom-task-input" type="text" maxlength="60" placeholder="Add a task..." aria-label="Your task" required>
+            <button type="submit">Add</button>
+          </form>
+          <div id="checklist" class="checklist"></div>
+          <div class="checklist-bottom"><span class="check-spark">✦</span><span id="checklist-message">You've got a fresh start. Make it count!</span></div>
+        </section>
+      </div>
+
+      <div class="content-grid lower-grid">
+        <section class="panel add-study-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">LOG YOUR LEARNING</p><h2>Add study time</h2></div>
+            <span class="heading-icon">＋</span>
+          </div>
+          <form id="study-form" class="study-form">
+            <div class="topic-field"><label class="field-label" for="study-topic">What did you study?</label><input id="study-topic" type="text" maxlength="60" placeholder="e.g. Reading, Listening" required></div>
+            <div class="field-row">
+              <div class="time-field"><label class="field-label" for="start-time">Start time</label><input id="start-time" type="time" required></div>
+              <div class="duration-field"><label class="field-label" for="duration-minutes">Duration</label><div class="duration-input"><input id="duration-minutes" type="number" min="1" max="1440" step="1" value="60" required><span>minutes</span></div></div>
+              <button class="primary-button" type="submit">Add session <span>↗</span></button>
+            </div>
+            <p class="form-feedback" id="study-feedback" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+      <footer class="footer-note">Made for the goals you're working toward <span>✦</span></footer>
+    </main>
+  </div>
+  <button class="reset-button" id="reset-open" type="button">Reset everything</button>
+  <dialog class="reset-dialog" id="reset-dialog" aria-labelledby="reset-title">
+    <span class="reset-dialog-icon" aria-hidden="true">↺</span>
+    <h2 id="reset-title">Clear everything?</h2>
+    <p>All study sessions, goals, and checklist progress will be permanently removed from this browser.</p>
+    <div class="reset-dialog-actions">
+      <button class="reset-no" id="reset-no" type="button">No, keep it</button>
+      <button class="reset-yes" id="reset-yes" type="button">Yes, clear everything</button>
+    </div>
+  </dialog>
+</body>
+</html>
